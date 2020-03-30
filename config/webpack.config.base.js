@@ -1,36 +1,38 @@
 'use strict'
 const path = require('path')
-const WebpackConfig = require('./webpack.config')
-const { VueLoaderPlugin } = require('vue-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const utils = require('./utils')
+const config = require('./webpack.config')
+const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
 }
 
-const assetsPath = ((_path) => {
-    const assetsSubDirectory = process.env.NODE_ENV === 'production' ?
-        WebpackConfig.build.assetsSubDirectory :
-        WebpackConfig.dev.assetsSubDirectory
-
-    return path.posix.join(assetsSubDirectory, _path)
-})
-
 module.exports = {
-    // mode: 'production',
     context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'
     },
     output: {
-        path: WebpackConfig.build.assetsRoot,
-        filename: '[name].js'
+        path: config.build.assetsRoot,
+        filename: '[name].js',
+        publicPath: process.env.NODE_ENV === 'production' ?
+            config.build.assetsPublicPath :
+            config.dev.assetsPublicPath
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': resolve('src'),
+        }
     },
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: vueLoaderConfig
             },
             {
                 test: /\.js$/,
@@ -42,7 +44,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                 limit: 10000,
-                name: assetsPath('img/[name].[hash:7].[ext]')
+                name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -50,7 +52,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                 limit: 10000,
-                name: assetsPath('media/[name].[hash:7].[ext]')
+                name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -58,10 +60,9 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                 limit: 10000,
-                name: assetsPath('fonts/[name].[hash:7].[ext]')
+                name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
             }
         ]
-    },
-    plugins: [new VueLoaderPlugin(), new HtmlWebpackPlugin()]
+    }
 };
