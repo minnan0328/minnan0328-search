@@ -1,8 +1,11 @@
 <template>
-    <dev id="app"></dev>
+    <router-view id="app"></router-view>
 </template>
-<style>
-    #app{
-        background-color: cadetblue;
-    }
-</style>
+<script>
+export default {
+    name:'App',
+    components: {}
+}
+</script>
+
+
