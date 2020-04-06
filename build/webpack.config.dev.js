@@ -11,9 +11,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
-
-const HOST = process.env.HOST;
-const PORT = process.env.PORT && Number(process.env.PORT);
+const notifier = require('node-notifier')
+const packageConfig = require('../package.json')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
@@ -28,11 +27,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         },
         hot: true,
         compress: true,
-        host: HOST || config.dev.host,
-        port: PORT || config.dev.port,
-        open: false,
+        host: config.dev.host,
+        port: config.dev.port,
+        open: config.dev.isOpenBrowser ? 'Google Chrome' : config.dev.isOpenBrowser,
         //編譯錯誤時畫面顯示警告
-        overlay: true ? { warnings: false, errors: true } : false,
+        overlay: { warnings: false, errors: true },
         publicPath: config.dev.assetsPublicPath,
         //使用代理至webpack.config.js -> proxyTable 設定
         proxy: config.dev.proxyTable,
@@ -51,36 +50,28 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             template: 'index.html',
             inject: true, //默認值為true，script 標籤位於 html 文件的 body 底部
         }),
-        // new webpack.HashedModuleIdsPlugin(),
-        new CopyWebpackPlugin([ ///待解決資料重複問題
-            {
-                from: path.resolve(__dirname, '../static'),
-                to: config.dev.assetsSubDirectory,
-                ignore: ['.*']
-            }
-        ]),
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, '../static'),
+            to: config.dev.assetsSubDirectory,
+            ignore: ['.*']
+        }]),
         new VueLoaderPlugin()
     ]
-});
-module.exports = new Promise((resolve, reject) => {
-    portfinder.basePort = process.env.PORT || config.dev.port
-    portfinder.getPort((err, port) => {
-        console.log(err, port)
-        if (err) {
-            reject(err)
-        } else {
-            // publish the new Port, necessary for e2e tests
-            process.env.PORT = port
-            // add port to devServer config
-            devWebpackConfig.devServer.port = port
-            // Add FriendlyErrorsPlugin
-            devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-                compilationSuccessInfo: {
-                    messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-                },
-                onErrors: config.dev.notifyOnErrors ? utils.createNotifierCallback() : undefined
-            }))
-            resolve(devWebpackConfig)
-        }
-    })
 })
+
+portfinder.basePort = process.env.PORT || config.dev.port
+module.exports = portfinder.getPortPromise().then(port => {
+    process.env.PORT, devWebpackConfig.devServer.port = port
+    devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
+        compilationSuccessInfo: { messages: [`http://${devWebpackConfig.devServer.host}:${port}`]},
+        onErrors: (severity, errors) => {
+            if (severity !== 'error') return
+            notifier.notify({
+                title: `WebpackConfig Error : ${packageConfig.name}`,
+                message: `${severity} : ${errors[0].name}`,
+                subtitle: errors[0].file && errors[0].file.split('!').pop() || ''
+            })
+        }
+    }))
+    return devWebpackConfig
+}).catch(error => { return console.log('WebpackConfig Error', error)})

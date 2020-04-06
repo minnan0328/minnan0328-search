@@ -1,20 +1,18 @@
+"use strict"
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Caplitomo from './../components/Caplitomo/Caplitomo.vue'
+import UdnDigital from './../components/UdnDigital/UdnDigital.vue'
 Vue.use(VueRouter)
 
 
 const routes = [
-  { path: '/', redirect: '/Caplitomo' },
-  { path: '/Caplitomo', component: Caplitomo},
+  { path: '/', redirect: '/UdnDigital' },
+  { path: '/UdnDigital', component: UdnDigital},
 
 ]
 
-const router = new VueRouter({
+export const router = new VueRouter({
   routes,
   mode: 'history',
   linkActiveClass: 'active'
 })
-export{
-  router
-}

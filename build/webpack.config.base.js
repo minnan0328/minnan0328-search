@@ -79,16 +79,16 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     esModule: false,
-                    limit: 10000,
+                    limit: 50000,
                     name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
             },
             {
-                test: /\.(mp4|mov|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     esModule: false,
-                    limit: 10000,
+                    limit: 50000,
                     name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },

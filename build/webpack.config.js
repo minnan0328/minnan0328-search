@@ -8,7 +8,7 @@ module.exports = {
         proxyTable: {},
         host: 'localhost',
         port: 8080,
-        notifyOnErrors: true,
+        isOpenBrowser: false
     },
     build: {
         index: path.resolve(__dirname, '../dist/index.html'),
