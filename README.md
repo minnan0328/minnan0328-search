@@ -26,14 +26,18 @@ npm run build
 
 > 起點
 >> App.vue 
+
 >> App.html 
+
 >> App.scss 
 
 ## Create Rule
 > dome
->> dome.vue 
->> dome.html 
->> dome.scss 
+>> dome.vue
+
+>> dome.html
+
+>> dome.scss
 
 ```bash
 <template src="./dome.html"></template>
