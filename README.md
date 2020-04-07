@@ -26,17 +26,13 @@ npm run build
 
 > 起點
 >> App.vue
-
 >> App.html
-
 >> App.scss
 
 ## Create Rule
 > dome
 >> dome.vue
-
 >> dome.html
-
 >> dome.scss
 
 ```bash
@@ -58,9 +54,7 @@ export default {
 > 資料夾 -> store
 
 > index.js
-
 >> vuex進入點
-
 >> modules -> import module
 
 > initState.js
