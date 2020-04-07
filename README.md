@@ -25,11 +25,10 @@ npm run build
 ## Components
 
 > 起點
-`
-App.vue
-App.html
-App.scss
-`
+`App.vue`
+`App.html`
+`App.scss`
+
 
 ## Create Rule
 > dome
