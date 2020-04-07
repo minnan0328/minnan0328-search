@@ -14,14 +14,26 @@ npm run dev
 # 最終上線版本
 npm run build
 ```
-## Create New VUe
+## Webpack Config
+> 資料夾 -> build
 
-> main.js
+## Create New Vue
 
-## Components Create Rule
+> 入口
+>> main.js
 
-> App.vue
->> 專案起始點
+## Components
+
+> 起點
+>> App.vue
+>> App.html
+>> App.scss
+
+## Create Rule
+> dome
+>> dome.vue
+>> dome.html
+>> dome.scss
 
 ```bash
 <template src="./dome.html"></template>
