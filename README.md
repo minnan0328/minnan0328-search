@@ -25,16 +25,15 @@ npm run build
 ## Components
 
 > 起點
-`App.vue`
-`App.html`
-`App.scss`
-
+>> App.vue 
+>> App.html 
+>> App.scss 
 
 ## Create Rule
 > dome
->> dome.vue
->> dome.html
->> dome.scss
+>> dome.vue 
+>> dome.html 
+>> dome.scss 
 
 ```bash
 <template src="./dome.html"></template>
@@ -63,9 +62,8 @@ export default {
 
 ## vue-router
 > 資料夾 -> routes
-
-> index.js
->> router settings
+>> index.js
+>>> router settings
 
 ## 靜態檔案
 > 資料夾 -> static
