@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 import UdnDigital from './../components/UdnDigital/UdnDigital.vue'
 Vue.use(VueRouter)
 
-
 const routes = [
   { path: '/', redirect: '/UdnDigital' },
   { path: '/UdnDigital', component: UdnDigital},

@@ -1,50 +1,52 @@
-.UenDigital-warpper{
-    width: 100vw;
-    height: 100vh;
-    background-color: #E1DCD9;
-    display: flex;
+.UenDigital-warpper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #e1dcd9;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  header,
+  footer,
+  .container {
+    display: inline-flex;
     justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    header,footer,.container{
-        display: inline-flex;
-        justify-content: center;
-        width: 100%;
+    width: 100%;
+  }
+  header {
+    height: 90%;
+    align-items: center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: opacity(0.5);
     }
-    header{
-        height: 90%;
-        align-items: center;
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: opacity(.5)
-        }
-    }
-    //#8F8681
-    .container{
-        height: 90%;
-        position: absolute;
-        bottom: 20%;
-        align-items: flex-end;
+  }
+  //#8F8681
+  .container {
+    height: 90%;
+    position: absolute;
+    bottom: 20%;
+    align-items: flex-end;
 
-        h1{
-            background-color: #32435F;
-            color: #E1DCD9;
-            border-top-left-radius: 30px;
-            border-bottom-left-radius: 30px;
-            padding: 20px;
-        }
-        p{
-            background-color: #A67f78;
-            color: #E1DCD9;
-            border-top-right-radius: 30px;
-            border-bottom-right-radius: 30px;
-            padding: 20px;
-        }
+    h1 {
+      background-color: #32435f;
+      color: #e1dcd9;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      padding: 20px;
     }
-    .footer{
-        height: 10%;
-        color: #32435F;
+    p {
+      background-color: #a67f78;
+      color: #e1dcd9;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      padding: 20px;
     }
+  }
+  .footer {
+    height: 10%;
+    color: #32435f;
+  }
 }
