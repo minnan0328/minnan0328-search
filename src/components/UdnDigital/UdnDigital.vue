@@ -1,14 +1,25 @@
-<template>
-	<div class="UenDigital-warpper">
-		<header>
-			<img src="./../../../static/images/Retro-camera_m.jpg" alt="">
-		</header>
-		<div class="container">
-			<h1 v-text="title"></h1>
-			<p v-text="description"></p>
-		</div>
-		<footer v-text="copyright"></footer>
-	</div>
-</template>
-<script src="./UdnDigital.js"></script>
-<style lang="sass" scoped src="./UdnDigital.scss"></style>
+<template src="./UdnDigital.html"></template>
+<style lang="scss" scoped src="./UdnDigital.scss"></style>
+<script>
+import { mapState } from 'vuex';
+export default {
+	name: 'UdnDigital',
+	data(){
+		return {
+			title: '聯經數位一組',
+			description: 'Front-end development'
+		};
+	},
+	components: {},
+	computed:{
+		...mapState({
+			getUdnDigitalData: state => state.UdnDigital.UdnData
+		}),
+	},
+	created(){
+		this.$store.dispatch('getUdnDigitalData')
+	},
+	mounted(){},
+	methods:{}
+}
+</script>

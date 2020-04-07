@@ -1,20 +1,18 @@
 .UenDigital-warpper {
   width: 100vw;
-  height: 100vh;
-  background-color: #e1dcd9;
+  height: 90%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
   header,
-  footer,
   .container {
     display: inline-flex;
     justify-content: center;
     width: 100%;
   }
   header {
-    height: 90%;
+    // height: 90%;
     align-items: center;
     img {
       width: 100%;
@@ -23,19 +21,17 @@
       filter: opacity(0.5);
     }
   }
-  //#8F8681
   .container {
-    height: 90%;
+    height: 100%;
     position: absolute;
-    bottom: 20%;
-    align-items: flex-end;
-
+    align-items: center;
     h1 {
       background-color: #32435f;
       color: #e1dcd9;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
       padding: 20px;
+      box-shadow: 0 2px 2px 0 rgba(#8F8681,1);
     }
     p {
       background-color: #a67f78;
@@ -43,6 +39,7 @@
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px;
       padding: 20px;
+      box-shadow: 0 2px 2px 0 rgba(#8F8681,1);
     }
   }
   .footer {

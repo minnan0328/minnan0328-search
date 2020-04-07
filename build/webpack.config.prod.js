@@ -17,19 +17,19 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
 	mode: 'production',
-	devtool: config.build.productionSourceMap ? config.build.devtool : false,
+	devtool: '#source-map',
 	output: {
 		path: config.build.assetsRoot,
-		filename: utils.assetsPath('js/[name].[chunkhash].js'),
-		chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+		filename: utils.assetsPath('script/[name].[chunkhash].js'),
+		chunkFilename: utils.assetsPath('script/[id].[chunkhash].js')
 	},
 	//javascripe and css 壓縮
 	optimization: {
-		minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+		minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({ sourceMap: true})]
 	},
 	plugins: [
 		//重新 build 時，刪除之前的 dist 版本
-		new CleanWebpackPlugin({ dry: true }),
+		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			filename: config.build.index,
 			template: 'index.html',
