@@ -80,7 +80,7 @@ module.exports = {
         options: {
           esModule: false,
           limit: 1000000,
-          name: utils.assetsPath('images/[name].[hash:7].[ext]')
+          name: config.assetsPath('images/[name].[hash:7].[ext]')
         }
       },
       {
@@ -89,7 +89,7 @@ module.exports = {
         options: {
           esModule: false,
           limit: 1000000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          name: config.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
       {
@@ -98,7 +98,7 @@ module.exports = {
         options: {
           esModule: false,
           limit: 1000000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: config.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]

@@ -1,7 +1,6 @@
 process.env.NODE_ENV = 'production'
 
 const path = require('path')
-const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('./webpack.config')
 const merge = require('webpack-merge')
@@ -20,8 +19,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 	devtool: '#source-map',
 	output: {
 		path: config.build.assetsRoot,
-		filename: utils.assetsPath('script/[name].[chunkhash].js'),
-		chunkFilename: utils.assetsPath('script/[id].[chunkhash].js')
+		filename: config.assetsPath('script/[name].[chunkhash].js'),
+		chunkFilename: config.assetsPath('script/[id].[chunkhash].js')
 	},
 	//javascripe and css 壓縮
 	optimization: {
@@ -36,8 +35,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 			inject: true, //默認值為true，script 標籤位於 html 文件的 body 底部
 		}),
 		new MiniCssExtractPlugin({
-			filename: utils.assetsPath('css/[name].[contenthash].css'),
-			chunkFilename: utils.assetsPath('css/[id].[chunkhash].css')
+			filename: config.assetsPath('css/[name].[contenthash].css'),
+			chunkFilename: config.assetsPath('css/[id].[chunkhash].css')
 		}),
 		new webpack.HashedModuleIdsPlugin(),
 		new CopyWebpackPlugin([///待解決資料重複問題

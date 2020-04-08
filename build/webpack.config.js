@@ -1,9 +1,9 @@
 'use strict'
 const path = require('path');
-
+const assetsSubDirectory = 'static'
 module.exports = {
 	dev: {
-		assetsSubDirectory: 'static',
+		assetsSubDirectory: assetsSubDirectory,
 		assetsPublicPath: '/',
 		proxyTable: {},
 		host: 'localhost',
@@ -13,7 +13,10 @@ module.exports = {
 	build: {
 		index: path.resolve(__dirname, '../dist/index.html'),
 		assetsRoot: path.resolve(__dirname, '../dist'),
-		assetsSubDirectory: 'static',
+		assetsSubDirectory: assetsSubDirectory,
 		assetsPublicPath: '',
-	}
+	},
+	assetsPath: ((_path) => {
+		return path.posix.join(assetsSubDirectory, _path)
+	})
 }

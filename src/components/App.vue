@@ -4,7 +4,7 @@
 	import NavBar from './Utilities/NavBar/NavBar.vue'
 	import moment from 'moment'
 	export default {
-		name: 'App',
+		name: 'app',
 		components: {NavBar},
 		computed: {copyright: (() => { return `${moment().year()} © UDN Digital` })}
 	}
