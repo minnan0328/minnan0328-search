@@ -14,13 +14,6 @@ npm run dev
 # 最終上線版本
 npm run build
 ```
-## Webpack Config
-> 資料夾 -> build
-
-## Create New Vue
-
-> 入口
-`main.js`
 
 ## Components
 
@@ -49,21 +42,3 @@ export default {
 }
 </script>
 ```
-
-## Vuex
-> 資料夾 -> store
-
-> index.js
->> vuex進入點  
->> modules -> import module
-
-> initState.js
->> state 初始化設定
-
-## vue-router
-> 資料夾 -> routes
->> index.js
->>> router settings
-
-## 靜態檔案
-> 資料夾 -> static
