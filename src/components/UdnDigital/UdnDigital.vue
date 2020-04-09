@@ -5,21 +5,23 @@ import { mapState } from 'vuex';
 export default {
 	name: 'UdnDigital',
 	data(){
-		return {
-			title: '聯經數位一組',
-			description: 'Front-end development'
-		};
+		return {};
 	},
 	components: {},
 	computed:{
 		...mapState({
-			getUdnDigitalData: state => state.UdnDigital.UdnData
+			getTestData: state => state.TestData.UdnData
 		}),
 	},
-	created(){
-		this.$store.dispatch('getUdnDigitalData')
-	},
+	created(){},
 	mounted(){},
-	methods:{}
+	methods:{
+		getData(){
+			this.$store.dispatch('getTestData')
+		},
+		initState(){
+			this.$store.commit('initState')
+		}
+	}
 }
 </script>

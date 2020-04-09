@@ -1,10 +1,11 @@
-<div class="UenDigital-warpper">
-  <header>
-    <!-- <img src="./../../../static/images/Retro-camera_m.jpg" alt="build test"> -->
-    <img src="./../../../static/images/caplitomo1.png" alt="build test">
-  </header>
-  <div class="container">
-    <h1 v-text="title"></h1>
-    <p v-text="description"></p>
+<div class="container-warpper">
+  <div class="Vuex-test">
+    <h1>Vuex Test</h1>
+    <button @click="getData()">Get Data</button>
+    <button @click="initState()">init Data</button>
+  </div>
+  <div class="text-box" v-for="item in getTestData">
+    <h2 v-text="item.title"></h2>
+    <p v-text="item.description"></p>
   </div>
 </div>

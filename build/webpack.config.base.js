@@ -1,6 +1,5 @@
 'use strict'
 const path = require('path')
-const utils = require('./utils')
 const config = require('./webpack.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 

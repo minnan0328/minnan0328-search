@@ -1,3 +1,3 @@
 export default {
-	UdnData:{}
+	UdnData:[]
 }
