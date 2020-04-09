@@ -1,0 +1,34 @@
+  header {
+    position: relative;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: opacity(0.5) grayscale(1) blur(2px);
+    }
+    .header-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: absolute;
+      bottom: 200px;
+      font-size: 14px;
+      > h1 {
+        background-color: #32435f;
+        color: #e1dcd9;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        padding: 20px;
+        box-shadow: 0 2px 2px 0 rgba(#8F8681,0.7);
+      }
+      > p {
+        background-color: #a67f78;
+        color: #e1dcd9;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        padding: 20px;
+        box-shadow: 0 2px 2px 0 rgba(#8F8681,0.7);
+      }
+    }
+  }
