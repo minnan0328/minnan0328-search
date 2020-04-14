@@ -8,8 +8,8 @@ const baseWebpackConfig = require('./webpack.config.base')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const portfinder = require('portfinder');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const portfinder = require('portfinder')
 const notifier = require('node-notifier')
 const packageConfig = require('../package.json')
 
@@ -22,7 +22,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 			rewrites: [{
 				from: /.*/,
 				to: path.posix.join(config.dev.assetsPublicPath, 'index.html')
-			},],
+			}],
 		},
 		hot: true,
 		compress: true,
@@ -37,9 +37,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 		//出現警告時，控制台不會出現錯誤
 		quiet: true,
 		//取得文件更動通知
-		watchOptions: {
-			poll: true
-		}
+		watchOptions: {poll: true}
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
@@ -60,17 +58,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
 portfinder.basePort = process.env.PORT || config.dev.port
 module.exports = portfinder.getPortPromise().then(port => {
-	process.env.PORT, devWebpackConfig.devServer.port = port
+	process.env.PORT = port
+	devWebpackConfig.devServer.port = port
 	devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
 		compilationSuccessInfo: { messages: [`http://${devWebpackConfig.devServer.host}:${port}`]},
 		onErrors: (severity, errors) => {
 			if (severity !== 'error') return
 			notifier.notify({
-				title: `WebpackConfig Error : ${packageConfig.name}`,
+				title: `Webpack Config Error : ${packageConfig.name}`,
 				message: `${severity} : ${errors[0].name}`,
 				subtitle: errors[0].file && errors[0].file.split('!').pop() || ''
 			})
 		}
 	}))
 	return devWebpackConfig
-}).catch(error => { return console.log('WebpackConfig Error', error) })
+}).catch(error => { return console.log('Webpack Config Error', error) })

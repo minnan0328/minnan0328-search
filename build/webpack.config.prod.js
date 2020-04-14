@@ -39,7 +39,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 			chunkFilename: config.assetsPath('css/[id].[chunkhash].css')
 		}),
 		new webpack.HashedModuleIdsPlugin(),
-		new CopyWebpackPlugin([///待解決資料重複問題
+		new CopyWebpackPlugin([
 			{
 				from: path.resolve(__dirname, '../static'),
 				to: config.build.assetsSubDirectory,
