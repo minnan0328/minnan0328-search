@@ -14,7 +14,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 
-const webpackConfig = merge(baseWebpackConfig, {
+module.exports = merge(baseWebpackConfig, {
 	mode: 'production',
 	devtool: '#source-map',
 	output: {
@@ -49,4 +49,3 @@ const webpackConfig = merge(baseWebpackConfig, {
 		new VueLoaderPlugin()
 	]
 })
-module.exports = webpackConfig
