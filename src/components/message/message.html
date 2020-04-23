@@ -1,13 +1,14 @@
 <div class="container-warpper">
   <div class="Vuex-test">
     <h1>Vuex</h1>
+    <a href="http://www" target="_blank" rel="noopener noreferrer"></a>
     <div class="row">
-      <button class="btn" @click="getData()">Get Data</button>
+      <button class="btn getData" @click="getData()" id="getData">Get Data</button>
       <button class="btn" @click="initState()">init Data</button>
       <input type="text" v-model="TitleMode" placeholder="更換標題">
       <span>or</span>
       <input type="text" v-model="DescriptionMode" placeholder="更換描述">
-      <button class="btn" @click="SetData()">Set Data</button>
+      <button class="btn SetData" @click="SetData()" id="SetData">Set Data</button>
     </div>
   </div>
   <div class="subtitle">

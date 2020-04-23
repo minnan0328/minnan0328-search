@@ -1,3 +1,6 @@
 export default {
-	UdnData:[]
+	UdnData:{
+		// title: '',
+		// description: ''
+	}
 }

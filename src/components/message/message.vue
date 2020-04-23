@@ -1,9 +1,9 @@
-<template src="./vuex.html"></template>
-<style lang="scss" scoped src="./vuex.scss"></style>
+<template src="./message.html"></template>
+<style lang="scss" scoped src="./message.scss"></style>
 <script>
 import { mapState } from 'vuex';
 export default {
-	name: 'vuex',
+	name: 'message',
 	data(){
 		return {
 			TitleMode: null,
@@ -13,7 +13,7 @@ export default {
 	computed:{
 		...mapState({
 			getTestData: state => state.TestData.UdnData
-		}),
+		})
 	},
 	methods:{
 		getData(){

@@ -1,7 +1,7 @@
 <template src="./home.html"></template>
 <style lang="scss" scoped src="./home.scss"></style>
 <script>
-	import vuex from './../vuex/vuex.vue'
+	import Message from './../message/message.vue'
 	export default {
 		name: 'home',
 		data(){
@@ -10,6 +10,6 @@
 				description: 'Front-end development'
 			}
 		},
-		components: {vuex}
+		components: {Message}
 	}
 </script>
