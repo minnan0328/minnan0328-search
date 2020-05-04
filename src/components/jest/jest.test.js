@@ -1,12 +1,13 @@
 import { mount, shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import JestComponents from './jest.vue'
-// import Store from './../../store/index'
+import Store from './../../store/index'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-// jest.mock('axios')
+
+jest.mock('axios')
 describe('Message Test', () => {
   // let store,state,actions;
   beforeEach(() => {
@@ -29,7 +30,7 @@ describe('Message Test', () => {
     // })
   })
   // 導入測試 components
-  const wrapper = shallowMount(JestComponents, { localVue })
+  const wrapper = shallowMount(JestComponents, { Store,localVue })
 
   test('[測試] 點擊按鈕傳值驗證是否正確', async () => {
     wrapper.find('#sendMessage').trigger('click');
@@ -43,7 +44,9 @@ describe('Message Test', () => {
     expect(wrapper.vm.message).toBe('Change Message')
     console.log(`JestComponents change vm.message : ${wrapper.vm.message}`)
   })
-  test('[測試] Vuex 非同步與同步功能',() => {
-    wrapper.vm.getStore()
+  test('[測試] Vuex 非同步與同步功能', () => {
+    // wrapper.vm.getStore()
+    expect(wrapper.vm.getStore()).toHaveBeenCalled()
+    // wrapper.vm.getTestData()
   })
 })

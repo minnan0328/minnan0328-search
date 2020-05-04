@@ -17,7 +17,7 @@ export default {
 				else commit('setTestData', result)
 			})
 			.catch(error => {
-					console.log(error)
+				console.log(error)
 			})
 			.finally(() => {
 				return
