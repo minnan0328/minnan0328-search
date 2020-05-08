@@ -8,25 +8,31 @@ export default {
 		return {
 			TitleMode: null,
 			DescriptionMode: null
-		};
+		}
+	},
+	props:{
+		subtitle: String
 	},
 	computed:{
 		...mapState({
-			getTestData: state => state.TestData.UdnData
+			getUDNData: state => state.TestData.UdnData
 		})
 	},
 	methods:{
+		sum(){
+			return 'text'
+		},
 		getData(){
 			this.$store.dispatch('getTestData')
 		},
 		initState(){
 			this.$store.commit('initState')
 		},
-		SetData(data){
+		SetData(){
 			this.$store.commit('setTestData',{
-				UdnData:{
-					title: this.TitleMode || this.getTestData.title,
-					description: this.DescriptionMode || this.getTestData.description
+					UdnData: {
+					// title: this.TitleMode || this.getUDNData.title,
+					// description: this.DescriptionMode || this.getUDNData.description
 				}
 			})
 			this.TitleMode = null

@@ -1,21 +1,21 @@
 <div class="container-warpper">
-  <div class="Vuex-test">
-    <h1>Vuex</h1>
-    <a href="http://www" target="_blank" rel="noopener noreferrer"></a>
+  <div class="container-box">
+    <h1 v-text="subtitle"></h1>
     <div class="row">
-      <button class="btn getData" @click="getData()" id="getData">Get Data</button>
-      <button class="btn" @click="initState()">init Data</button>
-      <input type="text" v-model="TitleMode" placeholder="更換標題">
+      <button class="btn" id="getData" @click="getData()">Get Data</button>
+      <button class="btn" id="initState" @click="initState()">init Data</button>
+      <input type="text" id="inputTitle" v-model="TitleMode" placeholder="更換標題">
       <span>or</span>
-      <input type="text" v-model="DescriptionMode" placeholder="更換描述">
-      <button class="btn SetData" @click="SetData()" id="SetData">Set Data</button>
+      <input type="text" id="inputDescription" v-model="DescriptionMode" placeholder="更換描述">
+      <button class="btn" id="SetData" @click="SetData()">Set Data</button>
     </div>
   </div>
   <div class="subtitle">
     <h2>Data : </h2>
+    <span v-if="play">{{play}}</span>
   </div>
   <div class="text-box">
-    <h2 v-if="getTestData.title" v-text="getTestData.title"></h2>
-    <p v-if="getTestData.description" v-text="getTestData.description"></p>
+    <h2 v-if="getUDNData.title" v-text="getUDNData.title"></h2>
+    <p v-if="getUDNData.description" v-text="getUDNData.description"></p>
   </div>
 </div>

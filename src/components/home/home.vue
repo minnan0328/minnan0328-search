@@ -7,7 +7,8 @@
 		data(){
 			return{
 				title: '聯經數位一組',
-				description: 'Front-end development'
+				description: 'Front-end development',
+				subtitle: 'Vuex'
 			}
 		},
 		components: {Message}
