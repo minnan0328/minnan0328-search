@@ -3,11 +3,6 @@ import Vuex from 'vuex'
 import Message from './message.vue'
 const localVue = createLocalVue()
 localVue.use(Vuex)
-// export const sum = {
-//   get: () => {
-//     return 'text'
-//   }
-// }
 describe('Message Components and Vuex Process Test', () => {
   let store, state, actions, mutations;
   beforeEach(() => {
@@ -33,7 +28,7 @@ describe('Message Components and Vuex Process Test', () => {
 
   // 導入測試 components
   
-  it('[測試] store mapState called', () => {
+  // it('[測試] store mapState called', () => {
     // const wrapper = mount(Message, { store, localVue })
     // wrapper.vm.setComputed({
     //   getUDNData:{
@@ -63,7 +58,7 @@ describe('Message Components and Vuex Process Test', () => {
     // await wrapper.vm.$nextTick();
     // expect(spy).toHaveBeenCalled()
     // spy.mockRestore();
-  })
+  // })
 
   it('[測試] props 父子組件傳值', () => {
     const wrapper = shallowMount(Message, {

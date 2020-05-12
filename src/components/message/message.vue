@@ -19,9 +19,6 @@ export default {
 		})
 	},
 	methods:{
-		sum(){
-			return 'text'
-		},
 		getData(){
 			this.$store.dispatch('getTestData')
 		},
