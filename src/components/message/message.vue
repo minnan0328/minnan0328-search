@@ -24,10 +24,11 @@ export default {
 		},
 		initState(){
 			this.$store.commit('initState')
+			
 		},
 		SetData(){
 			this.$store.commit('setTestData',{
-					UdnData: {
+				UdnData: {
 					// title: this.TitleMode || this.getUDNData.title,
 					// description: this.DescriptionMode || this.getUDNData.description
 				}
