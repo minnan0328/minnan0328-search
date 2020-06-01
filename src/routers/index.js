@@ -1,7 +1,7 @@
 "use strict"
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from './../components/home/home.vue'
+import Home from '@/components/home/home'
 Vue.use(VueRouter)
 
 const root = {path: '/', redirect: '/home'}

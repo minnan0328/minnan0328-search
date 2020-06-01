@@ -1,7 +1,8 @@
 <template src="./home.html"></template>
 <style lang="scss" scoped src="./home.scss"></style>
 <script>
-	import vuex from './../vuex/vuex.vue'
+
+	import vuex from '../vuex/vuex'
 	export default {
 		name: 'home',
 		data(){

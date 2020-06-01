@@ -1,7 +1,7 @@
 <template src="./NavBar.html"></template>
 <style lang="scss" scoped src="./NavBar.scss"></style>
 <script>
-import { ComponentRouters } from './../../../routers/index.js'
+import { ComponentRouters } from './../../../routers/index'
 export default {
   name: 'NavBar',
   data(){

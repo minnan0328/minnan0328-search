@@ -2,7 +2,7 @@
 <style lang="scss" src="./App.scss"></style>
 <script>
 	import moment from 'moment'
-	import NavBar from './Utilities/NavBar/NavBar.vue'
+	import NavBar from './Utilities/NavBar/NavBar'
 	export default {
 		name: 'app',
 		data(){

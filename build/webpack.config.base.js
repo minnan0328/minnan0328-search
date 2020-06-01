@@ -20,7 +20,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, 'src'),
+      '@': resolve('src'),
     }
   },
   module: {
@@ -76,8 +76,9 @@ module.exports = {
         loader: 'url-loader',
         options: {
           esModule: false,
-          limit: 1000000,
-          name: config.assetsPath('images/[name].[hash:7].[ext]')
+          limit: 10000, //bytes , 10bk
+          name: config.assetsPath('images/[name].[ext]')
+          // name: config.assetsPath('images/[name].[hash:7].[ext]')
         }
       },
       {
@@ -85,8 +86,9 @@ module.exports = {
         loader: 'url-loader',
         options: {
           esModule: false,
-          limit: 1000000,
-          name: config.assetsPath('media/[name].[hash:7].[ext]')
+          limit: 10000, //bytes , 10kb
+          name: config.assetsPath('media/[name].[ext]')
+          // name: config.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
       {
@@ -94,8 +96,9 @@ module.exports = {
         loader: 'url-loader',
         options: {
           esModule: false,
-          limit: 1000000,
-          name: config.assetsPath('fonts/[name].[hash:7].[ext]')
+          limit: 10000, //bytes ,10kb
+          name: config.assetsPath('fonts/[name].[ext]')
+          // name: config.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]
