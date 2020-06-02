@@ -10,17 +10,17 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json','.css','.sass','.scss'],
+    extensions: ['.js', '.vue', '.json', '.css', '.sass', '.scss'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      vue$: 'vue/dist/vue.esm.js', //import Vue from 'vue'
+      '@': resolve('src'), //'@/components/home/home'
     }
   },
   module: {
@@ -31,43 +31,47 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: file => (/node_modules/.test(file) && !/\.vue\.js/.test(file)), //過濾 node_modules 和 不是 .vue and .js 檔案
+        exclude: (file) => /node_modules/.test(file) && !/\.vue\.js/.test(file), //過濾 node_modules 和 不是 .vue and .js 檔案
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
           }
         },
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')], //包含指定資料夾內檔案
+        include: [resolve('src'),resolve('test'),resolve('node_modules/webpack-dev-server/client')], //包含指定資料夾內檔案
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          process.env.NODE_ENV === 'production' ?
-            MiniCssExtractPlugin.loader : {
-              loader: 'vue-style-loader',
-              options: {
-                sourceMap: true
-              }
-            },{
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-                sourceMap: true
-              }
-            },{
-              loader: 'postcss-loader',
-              options: {
-                plugins: [require('autoprefixer')],
-                sourceMap: true
+          process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : {
+                loader: 'vue-style-loader',
+                options: {
+                  sourceMap: true,
+                }
               },
-            }, {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [require('autoprefixer')],
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
             }
-        ]
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -75,8 +79,7 @@ module.exports = {
         options: {
           esModule: false,
           limit: 10000, //bytes , 10bk
-          name: config.assetsPath('images/[name].[ext]')
-          // name: config.assetsPath('images/[name].[hash:7].[ext]')
+          name: config.assetsPath('images/[name].[ext]'),
         }
       },
       {
@@ -85,8 +88,7 @@ module.exports = {
         options: {
           esModule: false,
           limit: 10000, //bytes , 10kb
-          name: config.assetsPath('media/[name].[ext]')
-          // name: config.assetsPath('media/[name].[hash:7].[ext]')
+          name: config.assetsPath('media/[name].[ext]'),
         }
       },
       {
@@ -95,10 +97,9 @@ module.exports = {
         options: {
           esModule: false,
           limit: 10000, //bytes ,10kb
-          name: config.assetsPath('fonts/[name].[ext]')
-          // name: config.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: config.assetsPath('fonts/[name].[ext]'),
         }
       }
     ]
   }
-}
+};

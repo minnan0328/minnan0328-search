@@ -12,6 +12,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 
 module.exports = merge(baseWebpackConfig, {
@@ -21,21 +22,22 @@ module.exports = merge(baseWebpackConfig, {
 		path: config.build.assetsRoot,
 		filename: config.assetsPath('script/[name].[chunkhash].js'),
 	},
-	//javascripe and css 壓縮
 	optimization: {
-		minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({ sourceMap: true})],
+		minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({ sourceMap: true})],	//javascripe and css 壓縮
 		runtimeChunk: {
 			name: "manifest",
 		},
 		splitChunks: {
+			chunks: 'all',
+			name: true,
 			cacheGroups: {
-				commons: {
+				commons: { 
 					name: 'commons',
 					chunks: 'initial',
-					minChunks: 2
+					minChunks: 2 //當導入兩次以上的 code 就會被就會被提取出來
 				},
 				vendors: {
-					test: /[\\/]node_modules[\\/]/,
+					test: /[\\/]node_modules[\\/]/, //提取導入得模組
 					name: 'vendors',
 					chunks: 'initial',
 					enforce: true
@@ -44,6 +46,7 @@ module.exports = merge(baseWebpackConfig, {
 		}
 	},
 	plugins: [
+		// new BundleAnalyzerPlugin(),
 		//重新 build 時，刪除之前的 dist 版本
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
@@ -53,7 +56,6 @@ module.exports = merge(baseWebpackConfig, {
 		}),
 		new MiniCssExtractPlugin({
 			filename: config.assetsPath('css/[name].[contenthash].css'),
-			chunkFilename: config.assetsPath('css/[id].[chunkhash].css')
 		}),
 		new webpack.HashedModuleIdsPlugin(),
 		new CopyWebpackPlugin([

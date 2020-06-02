@@ -14,7 +14,6 @@ module.exports = {
 		index: path.resolve(__dirname, '../dist/index.html'),
 		assetsRoot: path.resolve(__dirname, '../dist'),
 		assetsSubDirectory: assetsSubDirectory,
-		assetsPublicPath: '',
 	},
 	assetsPath: ((_path) => {
 		return path.posix.join(assetsSubDirectory, _path)
