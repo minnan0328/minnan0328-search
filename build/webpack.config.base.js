@@ -21,7 +21,7 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm.js', //import Vue from 'vue'
       '@': resolve('src'), //'@/components/home/home'
-    }
+    },
   },
   module: {
     rules: [
@@ -36,9 +36,13 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-          }
+          },
         },
-        include: [resolve('src'),resolve('test'),resolve('node_modules/webpack-dev-server/client')], //包含指定資料夾內檔案
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('node_modules/webpack-dev-server/client'),
+        ], //包含指定資料夾內檔案
       },
       {
         test: /\.s[ac]ss$/i,
@@ -49,12 +53,12 @@ module.exports = {
                 loader: 'vue-style-loader',
                 options: {
                   sourceMap: true,
-                }
+                },
               },
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
+              importLoaders: 2,
               sourceMap: true,
             },
           },
@@ -69,7 +73,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-            }
+            },
           },
         ],
       },
@@ -77,10 +81,10 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          esModule: false,
+          esModule: false, //不使用 ES Module，改使用 CommonJS
           limit: 10000, //bytes , 10bk
           name: config.assetsPath('images/[name].[ext]'),
-        }
+        },
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -89,7 +93,7 @@ module.exports = {
           esModule: false,
           limit: 10000, //bytes , 10kb
           name: config.assetsPath('media/[name].[ext]'),
-        }
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -98,8 +102,8 @@ module.exports = {
           esModule: false,
           limit: 10000, //bytes ,10kb
           name: config.assetsPath('fonts/[name].[ext]'),
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 };
