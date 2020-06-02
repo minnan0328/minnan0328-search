@@ -17,31 +17,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 	mode: 'development',
 	devtool: 'cheap-module-eval-source-map',
 	devServer: {
-		clientLogLevel: 'warning',
-		historyApiFallback: {
+		clientLogLevel: 'warning', //當使用 inline mode ，在 server 或 HotModuleReplacementPlugin 重新啟動時，瀏覽器控制台只顯示錯誤警告
+		historyApiFallback: { //當使用 HTML5 History API 時，任何的 404 回應 都可能被替代 index.html
 			rewrites: [{
 				from: /.*/,
 				to: path.posix.join(config.dev.assetsPublicPath, 'index.html')
 			}],
 		},
-		hot: true,
-		compress: true,
+		hot: true, //啟用文件更動即時更新
+		contentBase: false, //使用 CopyWebpackPlugin 來指定來源目錄
+		compress: true, //啟用 gzip 壓縮
 		host: config.dev.host,
 		port: config.dev.port,
 		open: config.dev.isOpenBrowser ? 'Google Chrome' : config.dev.isOpenBrowser,
-		//編譯錯誤時畫面顯示警告
-		overlay: { warnings: false, errors: true },
+		overlay: { warnings: false, errors: true }, //全屏顯示編譯錯誤時畫面訊息，不顯示警告訊息
 		publicPath: config.dev.assetsPublicPath,
-		//使用代理至webpack.config.js -> proxyTable 設定
-		proxy: config.dev.proxyTable,
-		//出現警告時，控制台不會出現錯誤
-		quiet: true,
-		//取得文件更動通知
-		watchOptions: {poll: true}
+		proxy: config.dev.proxyTable, //使用代理至webpack.config.js -> proxyTable 設定
+		quiet: true,//true，終端機只出現啟動資訊，webpack的警告控制台不會出現錯誤
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin(),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: 'index.html',

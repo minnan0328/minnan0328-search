@@ -20,11 +20,28 @@ module.exports = merge(baseWebpackConfig, {
 	output: {
 		path: config.build.assetsRoot,
 		filename: config.assetsPath('script/[name].[chunkhash].js'),
-		chunkFilename: config.assetsPath('script/[id].[chunkhash].js')
 	},
 	//javascripe and css 壓縮
 	optimization: {
-		minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({ sourceMap: true})]
+		minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({ sourceMap: true})],
+		runtimeChunk: {
+			name: "manifest",
+		},
+		splitChunks: {
+			cacheGroups: {
+				commons: {
+					name: 'commons',
+					chunks: 'initial',
+					minChunks: 2
+				},
+				vendors: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'initial',
+					enforce: true
+				}
+			}
+		}
 	},
 	plugins: [
 		//重新 build 時，刪除之前的 dist 版本

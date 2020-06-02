@@ -17,7 +17,7 @@ module.exports = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json','.css','.sass','.scss'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -31,16 +31,14 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: file => (
-          /node_modules/.test(file) && !/\.vue\.js/.test(file)
-        ),
+        exclude: file => (/node_modules/.test(file) && !/\.vue\.js/.test(file)), //過濾 node_modules 和 不是 .vue and .js 檔案
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env']
           }
         },
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')], //包含指定資料夾內檔案
       },
       {
         test: /\.s[ac]ss$/i,
