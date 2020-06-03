@@ -23,11 +23,14 @@ module.exports = merge(baseWebpackConfig, {
 		filename: config.assetsPath('script/[name].[chunkhash].js'),
 	},
 	optimization: {
-		minimizer: [new TerserJSPlugin({ sourceMap: true }), new OptimizeCSSAssetsPlugin({ sourceMap: true})],	//javascripe and css 壓縮
-		runtimeChunk: {
+		minimizer: [
+			new TerserJSPlugin({ sourceMap: true }),
+			new OptimizeCSSAssetsPlugin({ sourceMap: true})
+		],	//javascripe and css 壓縮
+		runtimeChunk: { //拆分 js 
 			name: "manifest",
 		},
-		splitChunks: {
+		splitChunks: { //拆分 js 
 			chunks: 'all',
 			name: true,
 			cacheGroups: {
@@ -49,6 +52,7 @@ module.exports = merge(baseWebpackConfig, {
 		// new BundleAnalyzerPlugin(),
 		//重新 build 時，刪除之前的 dist 版本
 		new CleanWebpackPlugin(),
+		new webpack.HashedModuleIdsPlugin(),
 		new HtmlWebpackPlugin({
 			filename: config.build.index,
 			template: 'index.html',
@@ -57,7 +61,6 @@ module.exports = merge(baseWebpackConfig, {
 		new MiniCssExtractPlugin({
 			filename: config.assetsPath('css/[name].[contenthash].css'),
 		}),
-		new webpack.HashedModuleIdsPlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: path.resolve(__dirname, '../static'),
