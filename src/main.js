@@ -1,7 +1,7 @@
-import Vue from "vue"
-import App from './components/App.vue'
-import router from './routers/index'
-import { store } from './store/index'
+import Vue from "vue";
+import App from '@/components/App.vue';
+import router from '@/service/routers/index';
+import { store } from '@/service/store/index';
 
 new Vue({
 	render: h => h(App),
